@@ -1,15 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
 import AppLayout from './pages/AppLayout'
+import { DataProvider } from './context/DataContext'
 
 function App() {
   return (
     <>
-      <Router>
-        <Routes>
-          <Route index path='/' element={<AppLayout />} />
-        </Routes>
-      </Router>
+      <DataProvider>
+        <Router>
+          <Routes>
+            <Route index path='/' element={<AppLayout />} />
+          </Routes>
+        </Router>
+      </DataProvider>
     </>
   )
 }

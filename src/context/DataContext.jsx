@@ -1,10 +1,10 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
     // State Dark Mode
-    const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkmode'));
+    const [darkMode, setDarkMode] = useState(false);
 
     return <>
         <DataContext.Provider value={{ darkMode, setDarkMode }}>
