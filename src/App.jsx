@@ -1,10 +1,15 @@
 import { useState } from 'react'
-
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+import AppLayout from './pages/AppLayout'
 
 function App() {
   return (
     <>
-      <p>Study Plan</p>
+      <Router>
+        <Routes>
+          <Route index path='/' element={<AppLayout />} />
+        </Routes>
+      </Router>
     </>
   )
 }
