@@ -1,4 +1,5 @@
 import Logo from "../../assets/logo-study-plan.png"
+import { motion } from "framer-motion"
 
 const Header = () => {
     return <>
@@ -11,8 +12,8 @@ const Header = () => {
                             <img src={Logo} alt="Logo Study Plan" className="w-full h-full" />
                         </div>
                         <div>
-                            <h1 className="text-2xl font-medium">Study Planner</h1>
-                            <p className="font-lato text-sm">List your daily planner</p>
+                            <h1 className="text-2xl font-medium">Tasuku Planer.</h1>
+                            <p className="font-lato text-sm">Record your activities.</p>
                         </div>
                     </div>
                     <div className="border flex justify-between gap-x-4">
