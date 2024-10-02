@@ -2,6 +2,7 @@ import Logo from "../../assets/logo-study-plan.png"
 import { AnimatePresence, motion } from "framer-motion"
 import useTaskContext from "../../hooks/useTaskContext"
 import { FaSun } from "react-icons/fa6";
+import { FaRegMoon } from "react-icons/fa";
 
 const Header = () => {
     const { darkMode, setDarkMode } = useTaskContext();
@@ -20,41 +21,39 @@ const Header = () => {
                             <p className="font-lato text-sm">Record your activities.</p>
                         </div>
                     </div>
-                    <div className="flex justify-between gap-x-4">
-                        <button
-                            onClick={() => setDarkMode((isFakeDark) => !isFakeDark)}
-                            className="btn-fake-dark-mode"
-                        >
-                            {darkMode ? "☀️" : "🌙"}
-                        </button>
-                        <h2 className="font-medium">Selamat Datang, Ananda priya Yustira 👼</h2>
-                        <div className="border h-10 w-24 overflow-hidden  flex justify-center">
+                    <div className="flex justify-between items-center gap-x-4">
 
-                            {
-                                <AnimatePresence>
-                                    {
-                                        darkMode ? <motion.button
-                                            initial={{ y: 0 }}
-                                            animate={{ y: [0, 0, 0] }}
-                                            exit={{ y: [0, 0], }}
-                                            transition={{ duration: 2, times: [0.3, 0.3, 0.2], ease: 'easeInOut' }}
-                                            className="border"
+                        <h2 className="font-normal">Selamat Datang, Ananda priya Yustira 👼</h2>
+
+                        <div className="border rounded-lg h-10 w-10 overflow-hidden  flex justify-center">
+
+                            <AnimatePresence mode="wait">
+                                {
+                                    darkMode ? <motion.button
+                                        key="su-button"
+                                        initial={{ y: -100 }}
+                                        animate={{ y: [-50, 8, 0] }}
+                                        exit={{ y: [0, 8, -50], }}
+                                        transition={{ duration: .5, times: [.4], ease: 'easeInOut' }}
+                                        onClick={() => setDarkMode((isFakeDark) => !isFakeDark)}
+                                    >
+                                        <FaRegMoon className="text-yellow-400 text-2xl" />
+                                    </motion.button> : (
+                                        <motion.button
+                                            key="sun-button"
+                                            initial={{ y: -100 }}
+                                            animate={{ y: [50, -8, 0] }}
+                                            exit={{ y: [0, -8, 50], }}
+                                            transition={{ duration: .5, times: [0.3], ease: 'easeInOut' }}
+                                            onClick={() => setDarkMode((isFakeDark) => !isFakeDark)}
                                         >
-                                            <FaSun className="bg-red-400 text-2xl" />
-                                        </motion.button> : (
-                                            <motion.button
-                                                initial={{ y: -100 }}
-                                                animate={{ y: [100, 20, 0] }}
-                                                exit={{ y: [10, 100], }}
-                                                transition={{ duration: 2, times: [0.3, 0.3, 0.2], ease: 'easeInOut' }}
-                                                className="border"
-                                            >
-                                                <FaSun className="bg-yellow-400 text-2xl" />
-                                            </motion.button>
-                                        )
-                                    }
-                                </AnimatePresence>
-                            }
+                                            <FaSun className="text-yellow-400 text-2xl" />
+                                        </motion.button>
+                                    )
+                                }
+                            </AnimatePresence>
+
+
                         </div>
                     </div>
                 </div>

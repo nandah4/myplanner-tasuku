@@ -5,13 +5,13 @@ import { useEffect } from "react";
 const AppLayout = () => {
     const { darkMode, setDarkMode } = useTaskContext();
 
-    // useEffect(() => {
-    //     if (darkMode) {
-    //         document.documentElement.classList.add('darkmode');
-    //     } else {
-    //         document.documentElement.classList.remove('darkmode');
-    //     }
-    // }, [darkMode])
+    useEffect(() => {
+        if (darkMode) {
+            document.documentElement.classList.add('darkmode');
+        } else {
+            document.documentElement.classList.remove('darkmode');
+        }
+    }, [darkMode])
 
     return <>
         <Header />
