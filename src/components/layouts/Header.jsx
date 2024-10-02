@@ -33,14 +33,23 @@ const Header = () => {
                             {
                                 <AnimatePresence>
                                     {
-                                        darkMode ? '' : (
+                                        darkMode ? <motion.button
+                                            initial={{ y: 0 }}
+                                            animate={{ y: [0, 0, 0] }}
+                                            exit={{ y: [0, 0], }}
+                                            transition={{ duration: 2, times: [0.3, 0.3, 0.2], ease: 'easeInOut' }}
+                                            className="border"
+                                        >
+                                            <FaSun className="bg-red-400 text-2xl" />
+                                        </motion.button> : (
                                             <motion.button
                                                 initial={{ y: -100 }}
                                                 animate={{ y: [100, 20, 0] }}
                                                 exit={{ y: [10, 100], }}
                                                 transition={{ duration: 2, times: [0.3, 0.3, 0.2], ease: 'easeInOut' }}
+                                                className="border"
                                             >
-                                                <FaSun className="bg-yellow-400" />
+                                                <FaSun className="bg-yellow-400 text-2xl" />
                                             </motion.button>
                                         )
                                     }
