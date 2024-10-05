@@ -11,3 +11,11 @@
 .darkmode {
   @apply bg-black;
 }
+
+.style-sidebar-navigation {
+  @apply px-3 py-2 rounded-md flex items-center gap-x-3 mb-1 tracking-wide font-medium;
+}
+
+.active {
+  @apply text-white;
+}

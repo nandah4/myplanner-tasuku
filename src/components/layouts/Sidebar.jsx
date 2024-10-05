@@ -1,6 +1,7 @@
 import Logo from "../../assets/logo-study-plan.png"
 import { FaListCheck, FaHouse, FaAngleDown } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { FaRegFileAlt } from "react-icons/fa";
 
 const Sidebar = () => {
     return <>
@@ -24,18 +25,42 @@ const Sidebar = () => {
                             <FaAngleDown className="text-[#222831] text-lg" />
                         </span>
                     </div>
-                    <nav className="ml-4 mt-3">
+                    <nav className="mt-2">
                         <ul>
-                            <li className="flex items-center gap-x-3 mb-3 text-[#222831] tracking-wide font-medium"><FaHouse className="text-xl text-[#222831]" /><NavLink>Home</NavLink></li>
-                            <li className="flex items-center gap-x-3 mb-3 text-[#222831] tracking-wide font-medium"><FaListCheck className="text-xl text-[#222831]" /><NavLink>My Tasks</NavLink></li>
-                            <li className="flex items-center gap-x-3 mb-3 text-[#222831] tracking-wide font-medium"><FaListCheck className="text-xl text-[#222831]" /><NavLink>About Tasuku</NavLink></li>
-                            {/* <li className="flex items-center gap-x-4 mb-2"><FaListCheck className="text-base text-[#697565]" /><NavLink><p className="text-[#697565] text-sm font-medium">My Tasks</p></NavLink></li> */}
+                            <li>
+                                <NavLink to="/home"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-[#FF6600] text-white style-sidebar-navigation"
+                                            : "bg-white style-sidebar-navigation"
+                                    }>
+                                    <FaHouse className="text-xl" />Home</NavLink>
+                            </li>
+                            <li>
+                                <NavLink to="/mytasks"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-[#FF6600] text-white style-sidebar-navigation"
+                                            : "bg-white style-sidebar-navigation"
+                                    }>
+                                    <FaListCheck className="text-xl" />My Tasks</NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to="/about"
+                                    className={({ isActive }) =>
+                                        isActive
+                                            ? "bg-[#FF6600] text-white style-sidebar-navigation"
+                                            : "bg-white style-sidebar-navigation"
+                                    }>
+                                    <FaRegFileAlt className="text-xl" />About Tasuku</NavLink>
+                            </li>
                         </ul>
                     </nav>
                 </div>
-            </div>
+            </div >
 
-        </aside>
+        </aside >
     </>
 }
 export default Sidebar;

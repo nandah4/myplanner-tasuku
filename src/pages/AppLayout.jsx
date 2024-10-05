@@ -2,6 +2,7 @@ import useTaskContext from "../hooks/useTaskContext";
 import { useEffect } from "react";
 import Header from "../components/layouts/Header";
 import Sidebar from "../components/layouts/Sidebar";
+import Home from "./Home";
 import { Outlet } from "react-router";
 
 const AppLayout = () => {
