@@ -22,11 +22,8 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="flex justify-between items-center gap-x-4">
-
-                        <h2 className="font-normal">Selamat Datang, Ananda priya Yustira 👼</h2>
-
-                        <div className="border rounded-lg h-10 w-10 overflow-hidden  flex justify-center">
-
+                        <h2 className="font-normal">Ananda priya Yustira</h2>
+                        <div className="border rounded-xl h-10 w-10 overflow-hidden flex justify-center">
                             <AnimatePresence mode="wait">
                                 {
                                     darkMode ? <motion.button
@@ -37,7 +34,7 @@ const Header = () => {
                                         transition={{ duration: .5, times: [.4], ease: 'easeInOut' }}
                                         onClick={() => setDarkMode((isFakeDark) => !isFakeDark)}
                                     >
-                                        <FaRegMoon className="text-yellow-400 text-2xl" />
+                                        <FaRegMoon className="text-yellow-400 text-xl" />
                                     </motion.button> : (
                                         <motion.button
                                             key="sun-button"
@@ -47,17 +44,14 @@ const Header = () => {
                                             transition={{ duration: .5, times: [0.3], ease: 'easeInOut' }}
                                             onClick={() => setDarkMode((isFakeDark) => !isFakeDark)}
                                         >
-                                            <FaSun className="text-yellow-400 text-2xl" />
+                                            <FaSun className="text-yellow-400 text-xl" />
                                         </motion.button>
                                     )
                                 }
                             </AnimatePresence>
-
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </header >
     </>

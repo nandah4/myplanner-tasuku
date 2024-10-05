@@ -1,22 +1,27 @@
-import Header from "../components/layouts/Header";
 import useTaskContext from "../hooks/useTaskContext";
 import { useEffect } from "react";
+import Header from "../components/layouts/Header";
+import Sidebar from "../components/layouts/Sidebar";
+import { Outlet } from "react-router";
 
 const AppLayout = () => {
     const { darkMode, setDarkMode } = useTaskContext();
 
-    useEffect(() => {
-        if (darkMode) {
-            document.documentElement.classList.add('darkmode');
-        } else {
-            document.documentElement.classList.remove('darkmode');
-        }
-    }, [darkMode])
+    // useEffect(() => {
+    //     if (darkMode) {
+    //         document.documentElement.classList.add('darkmode');
+    //     } else {
+    //         document.documentElement.classList.remove('darkmode');
+    //     }
+    // }, [darkMode])
 
     return <>
-        <Header />
-
-        <p className="text-3xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate, et!</p>
+        <main className="flex">
+            <Sidebar />
+            <div className="flex-1">
+                <Outlet />
+            </div>
+        </main>
     </>
 }
 
