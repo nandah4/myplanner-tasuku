@@ -13,9 +13,9 @@
 }
 
 .style-sidebar-navigation {
-  @apply px-3 py-2 rounded-md flex items-center gap-x-3 mb-1 tracking-wide font-medium;
+  @apply px-3 py-2 rounded-md flex items-center gap-x-3 mb-1 tracking-wide;
 }
 
-.active {
-  @apply text-white;
+.style-input-task {
+  @apply px-2 py-3 text-gray-500 outline-none border rounded-md text-sm focus:border-[#FF6600] w-full;
 }
