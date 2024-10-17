@@ -4,7 +4,7 @@ import { formatedDate } from "../../utils/formatedDate";
 
 const FormAddTask = () => {
     // using use context
-    const { handleDataForm, tasks } = useTaskContext()
+    const { handleDataForm, tasks, setForm } = useTaskContext()
 
     // state for structure data
     const [titleTask, setTitleTask] = useState("");
@@ -25,8 +25,6 @@ const FormAddTask = () => {
         if (!titleTask) return;
         if (!descriptionTask) return;
         if (!priorityTask) return;
-        if (!startDate) return;
-        if (!dueDate) return;
 
         const addTask = {
             id: Date.now(),
@@ -35,7 +33,7 @@ const FormAddTask = () => {
             descriptionTask,
             priorityTask,
             startDate: formatedDate(startDate),
-            dueDateDate: formatedDate(dueDate),
+            dueDate: formatedDate(dueDate),
             isCompleted: isCompleted
         }
 
@@ -47,6 +45,8 @@ const FormAddTask = () => {
         setPriorityTask("")
         setStartDate("")
         setDueDate("")
+        setIsCompleted(false);
+        setForm(false)
     }
     console.log(tasks)
 
@@ -69,53 +69,50 @@ const FormAddTask = () => {
     }
 
     return <>
-        <section>
-            <form>
-                <table className="table-auto w-2/4 border-spacing-2 border-separate">
-                    <tbody className="">
-                        <tr>
-                            <td className="after:content-['*'] after:text-red-600 after:ml-0.5">Headline activity</td>
-                            <td ><input id="title" type="text" placeholder="Headline activity .." className="style-input-task mb-1" value={titleTask} onChange={onChangeHandleTitle} />
-                                {
-                                    isMaxTitle && (
-                                        <p className="text-xs text-red-600 font-medium ">Maximum Headline 70 character</p>
-                                    )
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Your description activity</td>
-                            <td><input id="description" type="text" placeholder="Description activity .." className="style-input-task mb-1" value={descriptionTask} onChange={onChangeHandleDesc} />
-                                {
-                                    isMaxDescription && (
-                                        <p className="text-xs text-red-600 font-medium ">Maximum Description 150 character</p>
-                                    )
-                                }
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Priority activity</td>
-                            <td className="flex items-center gap-x-3"><input id="important" type="radio" name="priority" value="Important" onChange={(e) => setPriorityTask(e.target.value)} />
-                                <label htmlFor="important">Important</label>
-                                <input id="not important" type="radio" name="priority" value="Not Important" onChange={(e) => setPriorityTask(e.target.value)} />
-                                <label htmlFor="not important">Not important</label></td>
-                        </tr>
-                        <tr>
-                            <td className="mb-2">Start date activity</td>
-                            <td><input className="mb-2" id="title" type="datetime-local" value={startDate} onChange={(e) => setStartDate(e.target.value)} /></td>
-                        </tr>
-                        <tr>
-                            <td>End date activity</td>
-                            <td><input id="title" type="datetime-local" value={dueDate} onChange={(e) => setDueDate(e.target.value)} /></td>
-                        </tr>
-                        <tr>
-                            <td>Mark as done</td>
-                            <td><input id="title" type="checkbox" checked={isCompleted} onChange={(e) => setIsCompleted(e.target.checked)} /></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div className=" py-2 px-2">
-                    <button className="border rounded-md px-8 py-2" onClick={handleTaskSubmit}>Submit</button>
+        <section className="absolute z-[9999] inset-x-0 bg-white shadow border rounded-md">
+            <form className="grid grid-cols-2 p-8 gap-x-10">
+                <div>
+                    <div>
+                        <label htmlFor="title " className="after:content-['*'] after:text-red-600 after:ml-0.5 text-base font-medium">Title Task</label>
+                        <input id="title" type="text" placeholder="Your headline activity .." className="style-input-task my-1" value={titleTask} onChange={onChangeHandleTitle} />
+                        {
+                            isMaxTitle && (
+                                <p className="text-xs text-red-600 font-medium ">Maximum Headline 70 character</p>
+                            )
+                        }
+                    </div>
+                    <div className="my-3">
+                        <label htmlFor="description " className="after:content-['*'] after:text-red-600 after:ml-0.5 text-base font-medium">Description Task</label>
+                        <input id="description" type="text" placeholder="Your Description activity .." className="style-input-task mb-1" value={descriptionTask} onChange={onChangeHandleDesc} />
+                        {
+                            isMaxDescription && (
+                                <p className="text-xs text-red-600 font-medium ">Maximum Description 150 character</p>
+                            )
+                        }
+                    </div>
+                    <div className="my-3">
+                        <label className="after:content-['*'] after:text-red-600 after:ml-0.5 text-base font-medium">Status Task</label>
+                        <div className=" flex items-center gap-x-4">
+                            <input id="important" type="radio" name="progress" value="On Progress" checked={priorityTask === "On Progress"} onChange={(e) => setPriorityTask(e.target.value)} />
+                            <label htmlFor="important">Progress</label>
+                            <input id="not important" type="radio" name="completed" value="Completed" checked={priorityTask === "Completed"} onChange={(e) => setPriorityTask(e.target.value)} />
+                            <label htmlFor="not important">Completed</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label className="after:content-['*'] after:text-red-600 after:ml-0.5 text-base font-medium block">Start Date Task</label>
+                        <input className="mb-2" id="title" type="datetime-local" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                    </div>
+                    <div className="my-3">
+                        <label className="after:content-['*'] after:text-red-600 after:ml-0.5 text-base font-medium block">Due Date Task</label>
+                        <input type="datetime-local" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+                    </div>
+                    <div className=" py-2 px-2">
+                        <button className="border rounded-md px-5 py-2 font-medium bg-yellow-200" onClick={handleTaskSubmit}>Submit</button>
+                    </div>
                 </div>
             </form>
         </section >
@@ -123,3 +120,6 @@ const FormAddTask = () => {
 }
 
 export default FormAddTask;
+
+{/* <td>Mark as done</td>
+<td><input id="title" type="checkbox" checked={isCompleted} onChange={(e) => setIsCompleted(e.target.checked)} /></td> */}

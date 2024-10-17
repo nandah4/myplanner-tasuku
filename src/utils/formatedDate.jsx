@@ -7,6 +7,9 @@ const options = {
 };
 
 const formatedDate = (date) => {
+    if (!date) {
+        return "...";  // Atau return nilai default lainnya seperti "" atau pesan khusus
+    }
     const dateA = new Date(date)
     const dateAfterFormat = new Intl.DateTimeFormat('en-US', options).format(dateA)
     return dateAfterFormat;

@@ -17,5 +17,13 @@
 }
 
 .style-input-task {
-  @apply px-2 py-3 text-gray-500 outline-none border rounded-md text-sm focus:border-[#FF6600] w-full;
+  @apply px-2 py-3 text-gray-500 outline-none border rounded-sm text-sm focus:border-[#FF6600] w-full;
+}
+
+/* Nav Style */
+.style-nav-active {
+  @apply text-orange-500 text-[15px] relative after:absolute after:-top-1 after:h-[3px] after:rounded-md after:w-1/2 after:bg-orange-500 after:left-0 after:duration-200;
+}
+.style-nav-nonActive {
+  @apply text-black text-[15px] relative after:absolute after:-top-1 after:h-[3px] after:rounded-md after:w-0 after:bg-orange-500 after:left-0 after:duration-200;
 }

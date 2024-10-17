@@ -15,8 +15,13 @@ function App() {
             <Route path='/' element={<AppLayout />} >
               <Route index element={<Navigate replace to='home' />} />
               <Route path='home' element={<Home />} />
-              <Route path='mytasks' element={<MyTasks />} />
+              <Route path='tasks' element={<MyTasks />} />
               <Route path='about' element={<AboutPage />} />
+              {/* <Route path='mytasks' element={<MyTasks />}>
+                <Route path='tasks' />
+                <Route path='on-progres' />
+                <Route path='is-completed' />
+              </Route> */}
             </Route>
           </Routes>
         </Router>
